@@ -1,6 +1,5 @@
-import React, {useState, useEffect, useMemo, useContext } from 'react';
+import React, {useEffect, useMemo, useContext } from 'react';
 import { useTable, useFilters, useSortBy, usePagination } from 'react-table';
-import { Link } from "react-router-dom";
 import { COLUMNS } from './columns'
 
 import './table.css';

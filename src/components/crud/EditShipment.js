@@ -9,6 +9,7 @@ import {
   Button
 } from "reactstrap";
 
+
 export const EditShipment = (props) => {
   const { editUser, data } = useContext(GlobalContext);
   const [selectedUser, setSelectedUser] = useState({
@@ -23,8 +24,8 @@ export const EditShipment = (props) => {
     const userId = currentUserId;
     console.log(userId)
     const selectedUser = data.find(user => user.id == userId);
-    // console.log(selectedUser)
-    setSelectedUser(selectedUser);
+    // localStorage.setItem('localData', JSON.stringify(selectedUser));
+    setSelectedUser(selectedUser) 
     
   }, [currentUserId, data])
 

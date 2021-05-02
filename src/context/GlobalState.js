@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
-
+import Loading from '../components/Loading/Loading'
 // Initial State
 const initialState = {
   users: []
@@ -20,21 +20,33 @@ export const GlobalProvider = ({ children }) => {
         const response = await fetch("http://localhost:3000/shipments");
         setLoding(false)
         const data = await response.json()
-        // console.log(data)
         dispatch({type: 'SET_USERS', payload: data});
-
-        // localStorage.setItem('localData', JSON.stringify(state.users)); 
-        // const myData = JSON.parse(localStorage.getItem('localData'));  
+        // console.log(data)
+        // localStorage.setItem('localData', JSON.stringify(data)); 
+          // dispatch({type: 'SET_USERS', payload: data});
+        // const myData = JSON.parse(localStorage.getItem('localData'));
+        // if(myData) {
+        //   dispatch({type: 'SET_USERS', payload: myData});
+        // }
         // console.log(myData)
-        // dispatch({type: 'EDIT_USER', payload: myData});
+        
     } catch(e) {
         setLoding(false)
         console.log("My error is ", e)
     }
      
 }
+// useEffect(() => {
+//   const myData = JSON.parse(localStorage.getItem('localData'));  
+//   console.log(myData)
+//   if(myData) {
+//       dispatch({type: 'SET_USERS', payload: myData});
+//     }
+  
+// },[])
 useEffect(() => {
     getUsers()
+    
 },[])
 
   // Actions
@@ -44,6 +56,10 @@ useEffect(() => {
       payload: user
     })
   }
+
+   if(loading) {
+     return <Loading/>
+   }
 
   return (
     <GlobalContext.Provider value={{ 

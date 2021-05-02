@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useContext } from 'react'
+import React, { useEffect, useMemo, useContext } from 'react'
 import { useTable,usePagination } from 'react-table'
 import { COLUMNS } from './ShipmentColumn'
 import { GlobalContext } from "../../context/GlobalState";
